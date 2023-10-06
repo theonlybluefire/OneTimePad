@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 
 function App() {
-const [keyDisplay, setKeyDisplay] = useState('ichts')
+const [keyDisplay, setKeyDisplay] = useState('Just type and see how your random key generates');
 const [text, setText] = useState('')
 //handle Input
 const handleChange = (event) => {
@@ -27,7 +27,7 @@ const handleChange = (event) => {
       <h1 class="text-center">One Time Pad</h1>
       <br/>
       <div class="text-center">
-        {keyDisplay}
+        <p class="bold">{keyDisplay}</p>
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">input</label>
