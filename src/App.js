@@ -8,6 +8,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useState } from 'react';
 
 
+
 function App() {
 const [keyDisplay, setKeyDisplay] = useState('ichts')
 const [text, setText] = useState('')
@@ -22,6 +23,9 @@ const handleChange = (event) => {
 }
   return (
     <div>
+      <br/>
+      <h1 class="text-center">One Time Pad</h1>
+      <br/>
       <div class="text-center">
         {keyDisplay}
       </div>
