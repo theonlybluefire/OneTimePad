@@ -27,3 +27,8 @@ input:focus {
   border : 3px solid   !important;
   border-color: green !important;
 }
+ {
+  background-color: black;
+  border-color: green;
+  font-family: 'Victor Mono',monospace;
+}
