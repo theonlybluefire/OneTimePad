@@ -30,8 +30,7 @@ const handleChange = (event) => {
         <p class="bold">{keyDisplay}</p>
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">input</label>
-        <input class="form-control" id="exampleFormControlTextarea1" rows="3" value={text} onChange={handleChange}></input>
+        <input class="text-center" value={text} onChange={handleChange}></input>
       </div>
     </div>
   );

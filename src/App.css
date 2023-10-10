@@ -20,3 +20,10 @@ h2 {
 .bold {
   font-family: 'Roboto', sans-serif;
 }
+input {
+  background-color: rgb(0, 0, 0) !important;
+}
+input:focus {
+  border : 3px solid   !important;
+  border-color: green !important;
+}
