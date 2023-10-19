@@ -6,7 +6,7 @@ import generateKey from './components/randomGenerator';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useState } from 'react';
-
+import Algoinput from './components/otpAlgo';
 
 
 function App() {
@@ -30,9 +30,17 @@ const handleChange = (event) => {
         <p class="bold">{keyDisplay}</p>
       </div>
       <div class="mb-3">
-        <input class="text-center" value={text} onChange={handleChange}></input>
+        <input class="form-control text-center" value={text} onChange={handleChange}></input>
       </div>
+      <div class="resultBox">
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled">Disabled textarea with some text inside</textarea>
+          <label for="floatingTextarea2Disabled">Comments</label>
+        </div>
+      </div>
+      <Algoinput phrase='test' key={keyDisplay}/>
     </div>
   );
 }
+
 export default App;
