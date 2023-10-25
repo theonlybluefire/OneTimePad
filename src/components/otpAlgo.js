@@ -1,6 +1,5 @@
 const Algoinput = () => {
     const phrase = 'Hell'
-
     const key = 'bref'
     var lengthPhrase = 5
     var numbersPhrase = []
@@ -29,6 +28,7 @@ const Algoinput = () => {
         let number = letterToNumber(key[i]);
         numbersKey.push(number)
     }
+    
     //addition
     console.info('Algorithmen Test 3 -> Addition')
     for(let i=0;i<lengthPhrase;i++) {
