@@ -1,9 +1,9 @@
 const Algoinput = () => {
     const phrase = 'Hell'
     const key = 'bref'
-    var lengthPhrase = 5
+    var lengthPhrase = 4
     var numbersPhrase = []
-    var lenghtKey = 5
+    var lenghtKey = 4
     var numbersKey = []
     var returnArray = []
     console.warn(lengthPhrase,lenghtKey)
@@ -21,15 +21,11 @@ const Algoinput = () => {
         console.log('modulo Test 1',i)
         let number = letterToNumber(phrase[i]);
         numbersPhrase.push(number)
-    }
-    console.info('Algorithmen Test 2 -> letter to Number')
-    for(let i=0;i<lenghtKey;i++) {
         console.log('modulo Test 2',i)
-        let number = letterToNumber(key[i]);
+        number = letterToNumber(key[i]);
         numbersKey.push(number)
     }
-    
-    //addition
+    //adition
     console.info('Algorithmen Test 3 -> Addition')
     for(let i=0;i<lengthPhrase;i++) {
         console.log('modulo Test 3',i)
