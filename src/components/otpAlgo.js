@@ -1,6 +1,4 @@
-const Algoinput = () => {
-    const phrase = 'Hallo'
-    const key = 'ABCDE'
+const Algoinput = (phrase,key) => {
     var lengthPhrase = phrase.length
     var numbersPhrase = []
     var lenghtKey = key.length
