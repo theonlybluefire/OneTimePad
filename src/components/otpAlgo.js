@@ -1,23 +1,25 @@
 const Algoinput = () => {
-    const phrase = 'Hell'
-    const key = 'bref'
-    var lengthPhrase = 4
+    const phrase = 'Hallo'
+    const key = 'ABCDE'
+    var lengthPhrase = phrase.length
     var numbersPhrase = []
-    var lenghtKey = 4
+    var lenghtKey = key.length
     var numbersKey = []
     var returnArray = []
     console.warn(lengthPhrase,lenghtKey)
     function letterToNumber(letter) {
         var asciiValue = letter.toUpperCase().charCodeAt(0);
-        return asciiValue - 64;
+        return asciiValue - 65;
       }
     function NumberToLetter(number) {
+        console.log('Number',number)
         let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-        let letter = alphabet[number - 1];
+        let letter = alphabet[number];
+        console.log('Returned Letter,',letter)
         return letter
     }
     console.info('Algorithmen Test 1 -> letter to Number')
-    for(let i=0;i<lengthPhrase;i++) {
+    for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
         console.log('modulo Test 1',i)
         let number = letterToNumber(phrase[i]);
         numbersPhrase.push(number)
@@ -27,13 +29,13 @@ const Algoinput = () => {
     }
     //adition
     console.info('Algorithmen Test 3 -> Addition')
-    for(let i=0;i<lengthPhrase;i++) {
+    for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
         console.log('modulo Test 3',i)
         returnArray.push(numbersKey[i]+numbersPhrase[i])
     }
     console.info('Algorithmen Test 4 -> modulo')
     //modulo
-    for(let i=0;i<lengthPhrase;i++) {
+    for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
         console.log('modulo Test 4',i)
         returnArray[i] = returnArray[i] % 26
         //numberTOLetter
