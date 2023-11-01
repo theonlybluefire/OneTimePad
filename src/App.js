@@ -29,8 +29,8 @@ function App() {
     
   
   const encrypt = () => {
-    console.log(text);
-    console.log(keyBackup)
+    var encryptedMessage = Algoinput(text,keyBackup.join(''));
+    console.log('Message',encryptedMessage)
   } 
   return (
     <div>
