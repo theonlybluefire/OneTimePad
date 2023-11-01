@@ -5,22 +5,36 @@ import generateKey from './components/randomGenerator';
 //others
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Algoinput from './components/otpAlgo';
 
 
 function App() {
-const [keyDisplay, setKeyDisplay] = useState('Just type and see how your random key generates');
-const [text, setText] = useState('')
-//handle Input
-const handleChange = (event) => {
-  setText(event.target.value)
-  let key = generateKey(event.target.value);
-  const keyElements = key.map((keyValue, index) => (
-    <span key={index}>{keyValue}</span>
-  ));
-  setKeyDisplay(keyElements)
-}
+  var keyElements = ''
+  const [encryptedMessage, setEncryotedMessage] = useState('')
+  const [keyDisplay, setKeyDisplay] = useState('Just type and see how your random key generates');
+  const [text, setText] = useState('')
+  //handle Input
+  const handleChange = (event) => {
+    setText(event.target.value)
+    let key = generateKey(event.target.value);
+    keyElements = key.map((keyValue, index) => (
+      <span key={index}>{keyValue}</span>
+    ));
+    setKeyDisplay(keyElements)
+    getVariableFromFunction(keyElements)
+  }
+  const getVariableFromFunction = (elements) => {
+    return elements
+  }
+  useEffect(()=>{
+    console.log(keyElements);
+    console.table(keyDisplay);
+    let test = getVariableFromFunction()
+  },[keyDisplay])
+  const encrypt = () => {
+    const encryptedMessage = ''
+  } 
   return (
     <div>
       <br/>
@@ -34,11 +48,11 @@ const handleChange = (event) => {
       </div>
       <div class="resultBox">
         <div class="form-floating mb-3">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled">Disabled textarea with some text inside</textarea>
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled">{encryptedMessage}</textarea>
           <label for="floatingTextarea2Disabled">Comments</label>
         </div>
       </div>
-      <Algoinput phrase='test' key={keyDisplay}/>
+      <buton class="btn btn-danger" onClick={encrypt}>Encrypt</buton>
     </div>
   );
 }

@@ -41,13 +41,7 @@ const Algoinput = (phrase,key) => {
         
     }
     console.table(returnArray)
-    return (
-        <div>
-            {returnArray.map((n) => {
-                <p>{n}</p>
-            })}
-        </div>
-    )
+    return returnArray
 
 }
 export default Algoinput
