@@ -12,14 +12,14 @@ import Algoinput from './components/otpAlgo';
 function App() {
   const [keyBackup, setKeyBackup] = useState('')
   const [encryptedMessage, setEncryotedMessage] = useState('')
-  const [keyDisplay, setKeyDisplay] = useState('Just type and see how your random key generates');
+  const [keyDisplay, setKeyDisplay] = useState('');
   const [text, setText] = useState('')
   //handle Input
   const handleChange = (event) => {
     setText(event.target.value)
     let key = generateKey(event.target.value);
     setKeyBackup(key)
-    console.log(keyBackup)
+    console.log('KeyBackup',keyBackup)
     var keyElements = key.map((keyValue, index) => (
       <span key={index}>{keyValue}</span>
     ));
