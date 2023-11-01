@@ -10,7 +10,7 @@ import Algoinput from './components/otpAlgo';
 
 
 function App() {
-  var keyElements = ''
+  const [keyBackup, setKeyBackup] = useState('')
   const [encryptedMessage, setEncryotedMessage] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('Just type and see how your random key generates');
   const [text, setText] = useState('')
@@ -18,22 +18,19 @@ function App() {
   const handleChange = (event) => {
     setText(event.target.value)
     let key = generateKey(event.target.value);
-    keyElements = key.map((keyValue, index) => (
+    setKeyBackup(key)
+    console.log(keyBackup)
+    var keyElements = key.map((keyValue, index) => (
       <span key={index}>{keyValue}</span>
     ));
     setKeyDisplay(keyElements)
-    getVariableFromFunction(keyElements)
   }
-  const getVariableFromFunction = (elements) => {
-    return elements
-  }
-  useEffect(()=>{
-    console.log(keyElements);
-    console.table(keyDisplay);
-    let test = getVariableFromFunction()
-  },[keyDisplay])
+
+    
+  
   const encrypt = () => {
-    const encryptedMessage = ''
+    console.log(text);
+    console.log(keyBackup)
   } 
   return (
     <div>
