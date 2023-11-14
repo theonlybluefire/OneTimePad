@@ -18,7 +18,8 @@ function App() {
   const handleChange = (event) => {
     setText(event.target.value)
     let key = generateKey(event.target.value);
-    setKeyBackup(key)
+    console.log('transfer key',key,'into Backup key function')
+    setKeyBackup(key) //übergabe in backup key arugment
     console.log('KeyBackup',keyBackup)
     var keyElements = key.map((keyValue, index) => (
       <span key={index}>{keyValue}</span>

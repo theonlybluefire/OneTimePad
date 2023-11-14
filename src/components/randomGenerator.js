@@ -6,9 +6,10 @@ const generateKey = (phrase) => {
     for(let i=0; i<lengthPhrase; i++) {
         let randomNumber = Math.random() * letters.length
         randomNumber = Math.round(randomNumber);
+        console.info('Random number is',randomNumber,'Entry Point :',i)
         key.push(letters[randomNumber])
     }
-    console.log(key)
+    console.info('Key generated :',key)
     return key
 }
 
