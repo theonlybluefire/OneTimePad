@@ -28,7 +28,18 @@ input:focus {
   border-color: green !important;
 }
 textarea {
-  background-color: black;
-  border-color: green;
-  font-family: 'Victor Mono',monospace;
+  transition: 0.25s !important;
+  color: white !important;
+  background-color: black !important;
+  border-color: green !important;
+  font-family: 'Victor Mono',monospace !important; 
+}
+textarea:focus {
+  transition: 0.5s !important;
+  border: 5px solid !important;
+  border-color: green !important; 
+}
+textarea:hover {
+  transition: 0.5s !important;
+ border: 5px solid;
 }

@@ -14,6 +14,7 @@ function App() {
   const [encryptedMessage, setEncryotedMessage] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('');
   const [text, setText] = useState('')
+
   //handle Input
   const handleChange = (event) => {
     setText(event.target.value)
@@ -41,8 +42,11 @@ function App() {
       <div class="text-center">
         <p class="bold">{keyDisplay}</p>
       </div>
-      <div class="mb-3">
-        <input class="form-control text-center" value={text} onChange={handleChange}></input>
+      <div class="resultBox">
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Your text goes here" id="floatingTextarea2Disabled" onChange={handleChange}>{text}</textarea>
+          <label for="floatingTextarea2Disabled">Message</label>
+        </div>
       </div>
       <div class="resultBox">
         <div class="form-floating mb-3">
