@@ -14,7 +14,6 @@ function App() {
   const [encryptedMessage, setEncrytedMessage] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('');
   const [text, setText] = useState('')
-
   //handle Input
   const handleChange = (event) => {
     setText(event.target.value)
@@ -26,10 +25,10 @@ function App() {
       <span key={index}>{keyValue}</span>
     ));
     setKeyDisplay(keyElements)
+    if(event.target.value=='') {
+      setEncrytedMessage('');
+    }
   }
-
-    
-  
   const encrypt = () => {
     var encryptedMessage = ''
     var encryptedArray = Algoinput(text,keyBackup.join(''));
@@ -40,9 +39,11 @@ function App() {
     copyToCliboard(keyBackup.join(''))
   } 
   const copyToCliboard = (value) => {
-  navigator.clipboard.writeText(value);
-  alert("Copied Key to Cliboard: " + value);
+    navigator.clipboard.writeText(value);
+    alert("Copied Key to Cliboard: " + value);
   }
+  //test if input is empty
+
   return (
     <div>
       <br/>
@@ -60,10 +61,12 @@ function App() {
       <div class="resultBox">
         <div class="form-floating mb-3">
           <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" value={encryptedMessage}></textarea>
-          <label for="floatingTextarea2Disabled">Comments</label>
+          <label for="floatingTextarea2Disabled">Encrypted Message</label>
         </div>
       </div>
-      <buton class="btn btn-danger" onClick={encrypt}>Encrypt</buton>
+      <div class="text-center">
+        <buton class="btn btn-danger" onClick={encrypt}>Encrypt</buton>
+      </div>
     </div>
   );
 }
