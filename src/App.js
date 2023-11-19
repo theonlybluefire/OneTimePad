@@ -11,7 +11,7 @@ import Algoinput from './components/otpAlgo';
 
 function App() {
   const [keyBackup, setKeyBackup] = useState('')
-  const [encryptedMessage, setEncryotedMessage] = useState('')
+  const [encryptedMessage, setEncrytedMessage] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('');
   const [text, setText] = useState('')
 
@@ -31,9 +31,18 @@ function App() {
     
   
   const encrypt = () => {
-    var encryptedMessage = Algoinput(text,keyBackup.join(''));
-    console.log('Message',encryptedMessage)
+    var encryptedMessage = ''
+    var encryptedArray = Algoinput(text,keyBackup.join(''));
+    for(let i=0;i<encryptedArray.length;i++) {
+        encryptedMessage += encryptedArray[i];
+    }
+    setEncrytedMessage(encryptedMessage)
+    copyToCliboard(keyBackup.join(''))
   } 
+  const copyToCliboard = (value) => {
+  navigator.clipboard.writeText(value);
+  alert("Copied Key to Cliboard: " + value);
+  }
   return (
     <div>
       <br/>
@@ -50,7 +59,7 @@ function App() {
       </div>
       <div class="resultBox">
         <div class="form-floating mb-3">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled">{encryptedMessage}</textarea>
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" value={encryptedMessage}></textarea>
           <label for="floatingTextarea2Disabled">Comments</label>
         </div>
       </div>

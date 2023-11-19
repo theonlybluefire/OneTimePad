@@ -43,3 +43,7 @@ textarea:hover {
   transition: 0.5s !important;
  border: 5px solid;
 }
+label::after {
+  background-color: green !important;
+
+}
