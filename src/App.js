@@ -6,17 +6,20 @@ import generateKey from './components/randomGenerator';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useEffect, useState } from 'react';
-import Algoinput from './components/otpAlgo';
+import { Algoinput, Decrypt} from'./components/otpAlgo.js'
 
 
 function App() {
   const [keyBackup, setKeyBackup] = useState('')
-  const [encryptedMessage, setEncrytedMessage] = useState('')
+  const [encryptedMessageText, setEncrytedMessageText] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('');
-  const [text, setText] = useState('')
+  const [MessageText, setMessageText] = useState('')
+  //decrypt stuff
+
   //handle Input
-  const handleChange = (event) => {
-    setText(event.target.value)
+  const handleMessageChange = (event) => {
+    setMessageText(event.target.value);
+    console.log('event.target.value:',event.target.value)
     let key = generateKey(event.target.value);
     console.log('transfer key',key,'into Backup key function')
     setKeyBackup(key) //übergabe in backup key arugment
@@ -26,16 +29,16 @@ function App() {
     ));
     setKeyDisplay(keyElements)
     if(event.target.value=='') {
-      setEncrytedMessage('');
+      setEncrytedMessageText(null);
     }
   }
   const encrypt = () => {
     var encryptedMessage = ''
-    var encryptedArray = Algoinput(text,keyBackup.join(''));
+    var encryptedArray = Algoinput(MessageText,keyBackup.join(''),'encrypt');
     for(let i=0;i<encryptedArray.length;i++) {
         encryptedMessage += encryptedArray[i];
     }
-    setEncrytedMessage(encryptedMessage)
+    setEncrytedMessageText(encryptedMessage)
     copyToCliboard(keyBackup.join(''))
   } 
   const copyToCliboard = (value) => {
@@ -43,7 +46,13 @@ function App() {
     alert("Copied Key to Cliboard: " + value);
   }
   //test if input is empty
-
+  //decrypt
+  const handleCryptedMessageChange = (event) => {
+    setEncrytedMessageText(event.target.value);
+  }
+  const decrypt = () => {
+    
+  }
   return (
     <div>
       <br/>
@@ -54,19 +63,21 @@ function App() {
       </div>
       <div class="resultBox">
         <div class="form-floating mb-3">
-          <textarea class="form-control" placeholder="Your text goes here" id="floatingTextarea2Disabled" onChange={handleChange}>{text}</textarea>
+          <textarea class="form-control" placeholder="Your text goes here" id="floatingTextarea2Disabled" value={MessageText} onChange={handleMessageChange}></textarea>
           <label for="floatingTextarea2Disabled">Message</label>
         </div>
       </div>
       <div class="resultBox">
         <div class="form-floating mb-3">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" value={encryptedMessage}></textarea>
+          <textarea class="form-control" id="floatingTextarea2Disabled" placeholder="EncryptedText" value={encryptedMessageText} onChange={handleCryptedMessageChange}></textarea>
           <label for="floatingTextarea2Disabled">Encrypted Message</label>
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center gap-2">
         <buton class="btn btn-danger" onClick={encrypt}>Encrypt</buton>
+        <buton class="btn btn-success" onClick={decrypt}>Decrypt</buton>
       </div>
+
     </div>
   );
 }

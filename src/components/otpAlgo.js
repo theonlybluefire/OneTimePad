@@ -1,10 +1,9 @@
-const Algoinput = (phrase,key) => {
+export const Algoinput = (phrase,key, option) => {
     var lengthPhrase = phrase.length
     var numbersPhrase = []
     var lenghtKey = key.length
     var numbersKey = []
     var returnArray = []
-    console.warn(lengthPhrase,lenghtKey)
     function letterToNumber(letter) {
         var asciiValue = letter.toUpperCase().charCodeAt(0);
         return asciiValue - 65;
@@ -16,32 +15,53 @@ const Algoinput = (phrase,key) => {
         console.log('Returned Letter,',letter)
         return letter
     }
-    console.info('Algorithmen Test 1 -> letter to Number')
-    for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
-        console.log('modulo Test 1',i)
-        let number = letterToNumber(phrase[i]);
-        numbersPhrase.push(number)
-        console.log('modulo Test 2',i)
-        number = letterToNumber(key[i]);
-        numbersKey.push(number)
+    if(option=='encrypt') {
+        console.warn(lengthPhrase,lenghtKey)
+
+        console.info('Algorithmen Test 1 -> letter to Number')
+        for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
+            console.log('modulo Test 1',i)
+            let number = letterToNumber(phrase[i]);
+            numbersPhrase.push(number)
+            console.log('modulo Test 2',i)
+            number = letterToNumber(key[i]);
+            numbersKey.push(number)
+        }
+        //adition
+        console.info('Algorithmen Test 3 -> Addition')
+        for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
+            console.log('modulo Test 3',i)
+            returnArray.push(numbersKey[i]+numbersPhrase[i])
+        }
+        console.info('Algorithmen Test 4 -> modulo')
+        //modulo
+        for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
+            console.log('modulo Test 4',i)
+            returnArray[i] = returnArray[i] % 26
+            //numberTOLetter
+            returnArray[i] = NumberToLetter(returnArray[i]);
+            
+        }
+        console.table(returnArray)
+        return returnArray
+    
     }
-    //adition
-    console.info('Algorithmen Test 3 -> Addition')
-    for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
-        console.log('modulo Test 3',i)
-        returnArray.push(numbersKey[i]+numbersPhrase[i])
+    else if (option=='decrypt') {
+        for(let i=0; i<lengthPhrase;i++) {
+            numbersPhrase.push(letterToNumber(phrase[i]));
+            numbersKey.push(letterToNumber(key[i]));
+            returnArray.push(numbersKey[i]-numbersPhrase[i]);
+            returnArray[i] = returnArray[i] % 26;
+            returnArray[i] = NumberToLetter(returnArray[i]);
+        }
     }
-    console.info('Algorithmen Test 4 -> modulo')
-    //modulo
-    for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
-        console.log('modulo Test 4',i)
-        returnArray[i] = returnArray[i] % 26
-        //numberTOLetter
-        returnArray[i] = NumberToLetter(returnArray[i]);
-        
+    else  {
+        return Error
     }
-    console.table(returnArray)
-    return returnArray
 
 }
-export default Algoinput
+
+
+export const Decrypt = (encryptedPhrase, key) => {
+    //algo
+}
