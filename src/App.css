@@ -46,4 +46,10 @@ textarea:hover {
 label::after {
   background-color: green !important;
 
+} 
+input {
+  border-radius: 20px;
+  border : 5px solid;
+  border-color: green;
+  color: white;
 }

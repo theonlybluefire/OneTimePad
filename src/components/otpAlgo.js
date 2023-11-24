@@ -60,8 +60,3 @@ export const Algoinput = (phrase,key, option) => {
     }
 
 }
-
-
-export const Decrypt = (encryptedPhrase, key) => {
-    //algo
-}

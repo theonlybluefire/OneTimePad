@@ -6,7 +6,7 @@ import generateKey from './components/randomGenerator';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useEffect, useState } from 'react';
-import { Algoinput, Decrypt} from'./components/otpAlgo.js'
+import { Algoinput } from'./components/otpAlgo.js'
 
 
 function App() {
@@ -18,19 +18,23 @@ function App() {
 
   //handle Input
   const handleMessageChange = (event) => {
+    if(event.target.value=='') {
+      setEncrytedMessageText('');
+    }
     setMessageText(event.target.value);
     console.log('event.target.value:',event.target.value)
+    //generating key
     let key = generateKey(event.target.value);
     console.log('transfer key',key,'into Backup key function')
     setKeyBackup(key) //übergabe in backup key arugment
     console.log('KeyBackup',keyBackup)
-    var keyElements = key.map((keyValue, index) => (
-      <span key={index}>{keyValue}</span>
-    ));
-    setKeyDisplay(keyElements)
-    if(event.target.value=='') {
-      setEncrytedMessageText(null);
+    //map key
+    var keyElements = '';
+    for(let i=0;i<key.length;i++) {
+      keyElements += key[i];
     }
+    setKeyDisplay(keyElements)
+
   }
   const encrypt = () => {
     var encryptedMessage = ''
@@ -50,7 +54,17 @@ function App() {
   const handleCryptedMessageChange = (event) => {
     setEncrytedMessageText(event.target.value);
   }
+  const handleKeyChange = (event) => {
+    setKeyDisplay(event.target.value)
+  }
   const decrypt = () => {
+    var decryptedMessage = ''
+    var decryptedArray = Algoinput(encryptedMessageText,keyBackup.join(''),'decrypt');
+    for(let i=0;i<decryptedArray.length;i++) {
+      decryptedMessage += decryptedArray[i];
+    }
+    console.log('generated Message');
+    console.log('Text : ', decryptedMessage, 'with Key : ', keyBackup)
     
   }
   return (
@@ -59,7 +73,7 @@ function App() {
       <h1 class="text-center">One Time Pad</h1>
       <br/>
       <div class="text-center">
-        <p class="bold">{keyDisplay}</p>
+        <input value={keyDisplay} onChange={handleKeyChange}></input>
       </div>
       <div class="resultBox">
         <div class="form-floating mb-3">
