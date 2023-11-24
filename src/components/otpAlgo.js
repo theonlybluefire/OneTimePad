@@ -52,9 +52,11 @@ export const Algoinput = (phrase,key, option) => {
             numbersPhrase.push(letterToNumber(phrase[i]));
             numbersKey.push(letterToNumber(key[i]));
             returnArray.push(numbersKey[i]-numbersPhrase[i]);
-            returnArray[i] = returnArray[i] % 26;
+            returnArray[i] = returnArray[i] + 26;
+            returnArray[i] = returnArray[i] % 26
             returnArray[i] = NumberToLetter(returnArray[i]);
         }
+        return returnArray
     }
     else  {
         return Error
