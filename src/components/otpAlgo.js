@@ -47,6 +47,7 @@ export const Algoinput = (phrase,key, option) => {
     
     }
     else if (option=='decrypt') {
+        console.info('Decryption Mode activated')
         for(let i=0; i<lengthPhrase;i++) {
             numbersPhrase.push(letterToNumber(phrase[i]));
             numbersKey.push(letterToNumber(key[i]));
