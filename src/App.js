@@ -49,14 +49,14 @@ function App() {
   const handleKeyChange = (event) => {
     setKeyDisplay(event.target.value)
   }
-  
-  const decrypt = () => {
+
+  const decrypt = () => { //decrypt button
     var decryptedMessage = ''
     var decryptedArray = Algoinput(encryptedMessageText,keyDisplay,'decrypt');
-    for(let i=0;i<decryptedArray.length;i++) {
+    for(let i=0;i<decryptedArray.length;i++) { //put the things together (like in the handleMessageChange section)
       decryptedMessage += decryptedArray[i];
     }
-    
+    setMessageText(decryptedMessage)
   }
   return (
     <div>
@@ -66,6 +66,7 @@ function App() {
       <div class="text-center">
         <input value={keyDisplay} onChange={handleKeyChange}></input>
       </div>
+      <br/>
       <div class="resultBox">
         <div class="form-floating mb-3">
           <textarea class="form-control" placeholder="Your text goes here" id="floatingTextarea2Disabled" value={MessageText} onChange={handleMessageChange}></textarea>
