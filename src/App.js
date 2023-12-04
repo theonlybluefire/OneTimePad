@@ -10,61 +10,52 @@ import { Algoinput } from'./components/otpAlgo.js'
 
 
 function App() {
-  const [keyBackup, setKeyBackup] = useState('')
+  //define some variables
   const [encryptedMessageText, setEncrytedMessageText] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('');
-  const [MessageText, setMessageText] = useState('')
-  //decrypt stuff
+  const [MessageText, setMessageText] = useState('');
 
-  //handle Input
-  const handleMessageChange = (event) => {
-    if(event.target.value=='') {
-      setEncrytedMessageText('');
-    }
-    setMessageText(event.target.value);
-    console.log('event.target.value:',event.target.value)
-    //generating key
-    let key = generateKey(event.target.value);
-    console.log('transfer key',key,'into Backup key function')
-    setKeyBackup(key) //übergabe in backup key arugment
-    console.log('KeyBackup',keyBackup)
-    //map key
-    var keyElements = '';
-    for(let i=0;i<key.length;i++) {
-      keyElements += key[i];
-    }
-    setKeyDisplay(keyElements)
-
-  }
-  const encrypt = () => {
-    var encryptedMessage = ''
-    var encryptedArray = Algoinput(MessageText,keyBackup.join(''),'encrypt');
-    for(let i=0;i<encryptedArray.length;i++) {
-        encryptedMessage += encryptedArray[i];
-    }
-    setEncrytedMessageText(encryptedMessage)
-    copyToCliboard(keyBackup.join(''))
-  } 
   const copyToCliboard = (value) => {
     navigator.clipboard.writeText(value);
     alert("Copied Key to Cliboard: " + value);
   }
-  //test if input is empty
-  //decrypt
+  const handleMessageChange = (event) => {
+    if(event.target.value=='') { //clear the encrypted message text if the message text is empty 
+      setEncrytedMessageText('');
+    }
+    setMessageText(event.target.value);
+    let key = generateKey(event.target.value); //generate key
+    let keyElements = '';
+    for(let i=0;i<key.length;i++) { //key is currently this :['a','b','c']. This function puts it all together
+      keyElements += key[i];
+    }
+    setKeyDisplay(keyElements)
+  }
+
+  const encrypt = () => { //encrypt button
+    var encryptedMessage = ''
+    var encryptedArray = Algoinput(MessageText,keyDisplay,'encrypt');
+    for(let i=0;i<encryptedArray.length;i++) { //put the things together (like in the handleMessageChange section)
+        encryptedMessage += encryptedArray[i];
+    }
+    setEncrytedMessageText(encryptedMessage)
+    copyToCliboard(encryptedMessage) //copy cliboard
+  } 
+
   const handleCryptedMessageChange = (event) => {
     setEncrytedMessageText(event.target.value);
   }
+
   const handleKeyChange = (event) => {
     setKeyDisplay(event.target.value)
   }
+  
   const decrypt = () => {
     var decryptedMessage = ''
-    var decryptedArray = Algoinput(encryptedMessageText,keyBackup.join(''),'decrypt');
+    var decryptedArray = Algoinput(encryptedMessageText,keyDisplay,'decrypt');
     for(let i=0;i<decryptedArray.length;i++) {
       decryptedMessage += decryptedArray[i];
     }
-    console.log('generated Message');
-    console.log('Text : ', decryptedMessage, 'with Key : ', keyBackup)
     
   }
   return (

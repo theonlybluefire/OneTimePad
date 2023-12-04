@@ -1,13 +1,15 @@
 export const Algoinput = (phrase,key, option) => {
+    //define some global properties
     var lengthPhrase = phrase.length
     var numbersPhrase = []
-    var lenghtKey = key.length
     var numbersKey = []
     var returnArray = []
+
     function letterToNumber(letter) {
         var asciiValue = letter.toUpperCase().charCodeAt(0);
         return asciiValue - 65;
-      }
+    }
+
     function NumberToLetter(number) {
         console.log('Number',number)
         let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -15,50 +17,30 @@ export const Algoinput = (phrase,key, option) => {
         console.log('Returned Letter,',letter)
         return letter
     }
-    if(option=='encrypt') {
-        console.warn(lengthPhrase,lenghtKey)
 
-        console.info('Algorithmen Test 1 -> letter to Number')
-        for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
-            console.log('modulo Test 1',i)
-            let number = letterToNumber(phrase[i]);
-            numbersPhrase.push(number)
-            console.log('modulo Test 2',i)
-            number = letterToNumber(key[i]);
-            numbersKey.push(number)
+    if(option=='encrypt') {
+        for(let i=0;i<lengthPhrase;i++) {
+            numbersPhrase.push(letterToNumber(phrase[i])); // push the current phrase number
+            numbersKey.push(letterToNumber(key[i])) //push the current Key Number
+            returnArray.push(numbersKey[i]+numbersPhrase[i]) //+
+            returnArray[i] = returnArray[i] % 26 //modulo 26
+            returnArray[i] = NumberToLetter(returnArray[i]); //put them back to letters
         }
-        //adition
-        console.info('Algorithmen Test 3 -> Addition')
-        for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
-            console.log('modulo Test 3',i)
-            returnArray.push(numbersKey[i]+numbersPhrase[i])
-        }
-        console.info('Algorithmen Test 4 -> modulo')
-        //modulo
-        for(let i=0;i<lengthPhrase;i++ || i==lengthPhrase) {
-            console.log('modulo Test 4',i)
-            returnArray[i] = returnArray[i] % 26
-            //numberTOLetter
-            returnArray[i] = NumberToLetter(returnArray[i]);
-            
-        }
-        console.table(returnArray)
         return returnArray
-    
     }
     else if (option=='decrypt') {
-        console.info('Decryption Mode activated')
         for(let i=0; i<lengthPhrase;i++) {
-            numbersPhrase.push(letterToNumber(phrase[i]));
-            numbersKey.push(letterToNumber(key[i]));
-            returnArray.push(numbersKey[i]-numbersPhrase[i]);
-            returnArray[i] = returnArray[i] + 26;
-            returnArray[i] = returnArray[i] % 26
-            returnArray[i] = NumberToLetter(returnArray[i]);
+            numbersPhrase.push(letterToNumber(phrase[i])); //push the current phrase number
+            numbersKey.push(letterToNumber(key[i])); //push the current Key Number
+            returnArray.push(numbersKey[i]-numbersPhrase[i]); //-
+            returnArray[i] = returnArray[i] + 26; //+26 to avoid a negative value
+            returnArray[i] = returnArray[i] % 26 //modulo 26
+            returnArray[i] = NumberToLetter(returnArray[i]); //put them back to letters
         }
         return returnArray
     }
     else  {
+        console.error('Option is not available. Please chose decrypt or encrypt')
         return Error
     }
 
