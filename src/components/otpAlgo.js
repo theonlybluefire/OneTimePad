@@ -31,10 +31,12 @@ export const Algoinput = (phrase,key, option) => {
     else if (option=='decrypt') {
         for(let i=0; i<lengthPhrase;i++) {
             numbersPhrase.push(letterToNumber(phrase[i])); //push the current phrase number
+            console.log('Number Phrase Array current',numbersPhrase,'Position',i);
             numbersKey.push(letterToNumber(key[i])); //push the current Key Number
-            returnArray.push(numbersKey[i]-numbersPhrase[i]); //-
-            returnArray[i] = returnArray[i] + 26; //+26 to avoid a negative value
-            returnArray[i] = returnArray[i] % 26 //modulo 26
+            console.log('Number Key Array current',numbersKey,'Position',i);
+            returnArray.push(numbersPhrase[i]-numbersKey[i]); //-
+            console.log('after -, current ReturnArray',returnArray,'Position',i);
+            returnArray[i] = ((returnArray[i] % 26) + 26) % 26 //modulo 26
             returnArray[i] = NumberToLetter(returnArray[i]); //put them back to letters
         }
         return returnArray
