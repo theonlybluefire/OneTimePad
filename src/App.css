@@ -21,7 +21,8 @@ h2 {
   font-family: 'Roboto', sans-serif;
 }
 input {
-  background-color: rgb(0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0.425) !important;
+  border-color: rgb(65, 64, 64) !important;
 }
 input:focus {
   border : 5px solid   !important;
@@ -34,16 +35,19 @@ textarea {
   background-color: black !important;
   border-color: green !important;
   font-family: 'Victor Mono',monospace !important; 
+  outline: none !important;
 }
 textarea:focus {
   transition: 0.5s !important;
   border: 5px solid !important;
-  border-color: green !important; 
+  border-color: green !important;
+  outline: none !important; 
 }
 textarea:hover {
   transition: 0.5s !important;
   border: 5px solid;
   border-color: green !important;
+  outline: none !important;
 }
 label::after {
   background-color: green !important;

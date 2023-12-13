@@ -65,6 +65,9 @@ function App() {
       <br/>
       <div class="text-center">
         <input value={keyDisplay} onChange={handleKeyChange}></input>
+        <button class="btn btn-secondary" onClick={()=> {
+          copyToCliboard(keyDisplay)
+        }}>copy key</button>
       </div>
       <br/>
       <div class="resultBox">
