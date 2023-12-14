@@ -42,7 +42,7 @@ export const Algoinput = (phrase,key, option) => {
         return returnArray
     }
     else  {
-        console.error('Option is not available. Please chose decrypt or encrypt')
+        console.error('Option is not available. Please choose decrypt or encrypt')
         return Error
     }
 

@@ -7,6 +7,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useEffect, useState } from 'react';
 import { Algoinput } from'./components/otpAlgo.js'
+import ShowToast from './components/Toast.js';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
 
   const copyToCliboard = (value) => {
     navigator.clipboard.writeText(value);
-    alert("Copied Key to Cliboard: " + value);
+    ShowToast('Copied ',value, 'to your cliboard' )
   }
   const handleMessageChange = (event) => {
     if(event.target.value=='') { //clear the encrypted message text if the message text is empty 
