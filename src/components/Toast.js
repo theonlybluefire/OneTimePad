@@ -1,32 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Toast from 'react-bootstrap/Toast';
+import * as bootstrap from 'bootstrap';
+import { Toast } from 'bootstrap';
+import { useEffect, useState, useRef } from 'react';
+function ShowToast({message}) {
+  var [toast, setToast] = useState(false);
+  const toastRef = useRef();
 
-function ShowToast({ message }) {
-  const [showA, setShowA] = useState(true);
-  const toggleShowA = () => setShowA(!showA);
-
+  useEffect(() => {
+      var myToast = toastRef.current
+      var bsToast = bootstrap.Toast.getInstance(myToast)
+      
+      if (!bsToast) {
+          // initialize Toast
+          bsToast = new Toast(myToast, {autohide: false})
+          // hide after init
+          bsToast.hide()
+          setToast(false)
+      }
+      else {
+          // toggle
+          toast ? bsToast.show() : bsToast.hide()
+      }
+  },[])
+ 
   return (
-    <Row>
-      <Col  class="toast-container" className="toast-container position-fixed bottom-0 end-0 p-3">
-        <Toast show={showA} onClose={toggleShowA}>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">System</strong>
-            <small>Jetzt</small>
-          </Toast.Header>
-          <Toast.Body>{message}</Toast.Body>
-        </Toast>
-      </Col>
-    </Row>
-  );
+  <div className="py-2">
+      <div className="toast position-absolute m-4" role="alert" ref={toastRef}>
+          <div className="toast-body">
+            {message}
+          </div>
+      </div>
+  </div>
+  )
 }
-
-
-export default ShowToast;
+export default ShowToast
