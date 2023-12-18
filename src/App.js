@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
 import './index.css'
 import generateKey from './components/randomGenerator';
+
 //others
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
@@ -15,10 +16,12 @@ function App() {
   const [encryptedMessageText, setEncrytedMessageText] = useState('')
   const [keyDisplay, setKeyDisplay] = useState('');
   const [MessageText, setMessageText] = useState('');
+  const [ToastSection, setToastSection] = useState('');
 
   const copyToCliboard = (value) => {
     navigator.clipboard.writeText(value);
-    ShowToast('Copied ',value, 'to your cliboard' )
+    let message = value+' wurde in die Zwischenablage kopiert'
+    setToastSection(<ShowToast message={message} />)
   }
   const handleMessageChange = (event) => {
     if(event.target.value=='') { //clear the encrypted message text if the message text is empty 
@@ -87,7 +90,7 @@ function App() {
         <buton class="btn btn-danger" onClick={encrypt}>Encrypt</buton>
         <buton class="btn btn-success" onClick={decrypt}>Decrypt</buton>
       </div>
-
+        {ToastSection}
     </div>
   );
 }
