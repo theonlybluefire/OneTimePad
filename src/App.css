@@ -63,11 +63,9 @@ input {
   transition: 0.5s;
   text-align: center;
 }
-
 .toast {
   background-color: black !important;
 }
-
 .toast-header {
   background-color: green !important;
   color: white !important;
@@ -75,7 +73,6 @@ input {
 .toast-body {
   background-color: rgb(40, 40, 40) !important;
   color: white !important;
-
 }
 .toast-container {
   transition: 0.5s !important;
