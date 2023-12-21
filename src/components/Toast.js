@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
-import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function ShowToast({ message }) {
   const [showA, setShowA] = useState(true);
