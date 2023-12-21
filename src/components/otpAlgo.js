@@ -18,7 +18,7 @@ export const Algoinput = (phrase,key, option) => {
         return letter
     }
 
-    if(option=='encrypt') {
+    if(option==='encrypt') {
         for(let i=0;i<lengthPhrase;i++) {
             numbersPhrase.push(letterToNumber(phrase[i])); // push the current phrase number
             numbersKey.push(letterToNumber(key[i])) //push the current Key Number
@@ -28,7 +28,7 @@ export const Algoinput = (phrase,key, option) => {
         }
         return returnArray
     }
-    else if (option=='decrypt') {
+    else if (option==='decrypt') {
         for(let i=0; i<lengthPhrase;i++) {
             numbersPhrase.push(letterToNumber(phrase[i])); //push the current phrase number
             console.log('Number Phrase Array current',numbersPhrase,'Position',i);

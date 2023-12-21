@@ -27,7 +27,7 @@ function App() {
     },2000)
   }
   const handleMessageChange = (event) => {
-    if(event.target.value=='') { //clear the encrypted message text if the message text is empty 
+    if(event.target.value==='') { //clear the encrypted message text if the message text is empty 
       setEncrytedMessageText('');
     }
     setMessageText(event.target.value);
