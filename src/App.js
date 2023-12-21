@@ -6,7 +6,7 @@ import generateKey from './components/randomGenerator';
 //others
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Algoinput } from'./components/otpAlgo.js'
 import ShowToast from './components/Toast.js';
 
