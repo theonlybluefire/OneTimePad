@@ -69,10 +69,8 @@ input {
 }
 
 .toast-header {
-  background-color: rgb(22, 22, 22) !important;
+  background-color: green !important;
   color: white !important;
-  outline-color: green !important;
-  outline-width: 20px !important;
 }
 .toast-body {
   background-color: rgb(40, 40, 40) !important;
@@ -81,8 +79,5 @@ input {
 }
 .toast-container {
   transition: 0.5s !important;
-}
-.btn-close {
-  outline-color: green !important;
 }
   

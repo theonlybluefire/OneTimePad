@@ -22,6 +22,9 @@ function App() {
     navigator.clipboard.writeText(value);
     let message = value+' wurde in die Zwischenablage kopiert'
     setToastSection(<ShowToast message={message} />)
+    setTimeout(() => {
+      setToastSection(null)
+    },2000)
   }
   const handleMessageChange = (event) => {
     if(event.target.value=='') { //clear the encrypted message text if the message text is empty 
