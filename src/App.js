@@ -9,6 +9,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useState } from 'react';
 import { Algoinput } from'./components/otpAlgo.js'
 import ShowToast from './components/Toast.js';
+import InformationComponent from './components/information.js';
 
 
 function App() {
@@ -93,7 +94,11 @@ function App() {
         <buton class="btn btn-danger" onClick={encrypt}>Encrypt</buton>
         <buton class="btn btn-success" onClick={decrypt}>Decrypt</buton>
       </div>
-        {ToastSection}
+        <div class="toast-section">
+          {ToastSection}
+        </div>
+        <br/>
+        <InformationComponent/>
     </div>
   );
 }
