@@ -25,6 +25,4 @@ function ShowToast({ message }) {
 
   );
 }
-
-
 export default ShowToast;

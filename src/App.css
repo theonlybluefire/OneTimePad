@@ -84,16 +84,23 @@ input {
   transition: 0.5s !important;
   background-color: black !important;
   color: rgb(126, 125, 125) !important;
-  border-color: red !important;
 
+}
+.accordion-button:focus {
+  transition: 0.5s;
+  outline: none !important;
+  outline: 3px solid !important;
+  outline-color: green !important;
 }
 .accordion-button:hover {
   transition: 0.5s !important;
   background-color: green !important;
   color: white !important;
-  
 }
 .accordion-body {
   background-color: rgb(32, 32, 32);
   color: white;
+}
+p {
+  color: rgb(48, 47, 47);
 }
