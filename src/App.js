@@ -21,7 +21,13 @@ function App() {
 
   const copyToCliboard = (value) => {
     navigator.clipboard.writeText(value);
-    let message = value+' wurde in die Zwischenablage kopiert'
+    var message = null;
+    if(value!='') {
+     message = value+' wurde in die Zwischenablage kopiert'
+  }
+    else {
+      message = 'Nichts wurde kopiert'
+    }
     setToastSection(<ShowToast message={message} />)
     setTimeout(() => {
       setToastSection(null)

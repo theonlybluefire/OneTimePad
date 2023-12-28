@@ -3,8 +3,15 @@ import Col from 'react-bootstrap/Col';
 import Toast from 'react-bootstrap/Toast';
 
 function ShowToast({ message }) {
+  if(sessionStorage.getItem('showedWarning')==true) {
+    console.log('lol');
+    setShowA(!showA)
+  }
   const [showA, setShowA] = useState(true);
-  const toggleShowA = () => setShowA(!showA);
+  const toggleShowA = () => {
+    sessionStorage.setItem('showedWarning',true)
+    setShowA(!showA)
+  };
 
   return (
 
