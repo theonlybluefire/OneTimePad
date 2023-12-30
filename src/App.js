@@ -21,7 +21,7 @@ function App() {
   const copyToCliboard = (value) => {
     navigator.clipboard.writeText(value);
     var message = null;
-    if(value!='') {
+    if(value!=='') {
      message = value+' wurde in die Zwischenablage kopiert'
   }
     else {

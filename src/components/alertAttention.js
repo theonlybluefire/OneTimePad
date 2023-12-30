@@ -1,5 +1,4 @@
 //imports
-import Accordion from 'react-bootstrap/Accordion';
 import Alert from 'react-bootstrap/Alert';
 import { useState } from 'react';
 
