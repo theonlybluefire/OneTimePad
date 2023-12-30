@@ -7,7 +7,7 @@ const AlertAttention = () => {
     const [showAlert, setShowAlert] = useState(true)
     if(showAlert) {
         return (
-            <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+            <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible data-bs-theme="dark">
             <Alert.Heading>Attention</Alert.Heading>
             <p>
             <strong>This algorithmen does not include spaces and it's not case sensitive.</strong>

@@ -9,7 +9,6 @@ import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import { useState } from 'react';
 import { Algoinput } from'./components/otpAlgo.js'
 import ShowToast from './components/Toast.js';
-import AccordionInfo from './components/accordionInfo.js';
 import AlertAttention from './components/alertAttention.js';
 
 function App() {
@@ -105,8 +104,6 @@ function App() {
         </div>
         <br/>
         <AlertAttention/>
-        <br/>
-        <AccordionInfo/>
     </div>
   );
 }

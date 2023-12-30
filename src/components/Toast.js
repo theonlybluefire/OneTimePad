@@ -15,7 +15,7 @@ function ShowToast({ message }) {
 
   return (
 
-      <Col  class="toast-container" className="toast-container position-fixed bottom-0 end-0 p-3">
+      <Col  class="toast-container" className="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark">
         <Toast show={showA} onClose={toggleShowA} animation={true}>
           <Toast.Header>
             <img

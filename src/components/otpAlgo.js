@@ -1,4 +1,5 @@
 export const Algoinput = (phrase,key, option) => {
+    var phrase = phrase.replace(/\s/g, "");
     //define some global properties
     var lengthPhrase = phrase.length
     var numbersPhrase = []
